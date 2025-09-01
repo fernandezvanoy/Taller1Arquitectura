@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antojos EAFIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'cuentas/css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cuentas/css/login_style.css' %}">
+    <link rel="stylesheet" href="{% static 'negocios/css/carrusel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/carrusel_recomendados.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> 
+    
+</head>
+<body>
+
+ 
+    <div class="top-bar">
+        <div class="contenedor-izquierda">
+            <div class="icono-menu" id="icono-menu">
+                <div class="linea"></div>
+                <div class="linea"></div>
+                <div class="linea"></div>
+            </div>
+            
+            <div class="menu-opciones" id="menu-opciones">
+                
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'categorias' %}">Categorias</a>
+                <a href="{% url 'catalogo' %}">Productos</a>
+                <a href="{% url 'create_entrepreneur' %}">Registrar emprendimiento</a>
+                <a href="{% url 'entrepreneur_list' %}">Lista emprendimientos</a>
+            
+            </div>
+        </div>
+
+        <img src="{% static 'cuentas/img/logo.png' %}" alt="Logo" class="logo">
+
+        <div class="iconos-derecha">
+            <i id="icono-usuario" class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div id="menu-usuario" class="menu-usuario">
+            Antojos EAFIT
+            {% if user.is_authenticated %}
+                <p>Bienvenido, {{ user.nombre_completo }}</p>
+                <a href="{% url 'logout' %}">Cerrar Sesión</a>
+            {% else %}
+                <a href="{% url 'login_view' %}">Iniciar Sesión</a>
+                <a href="{% url 'registro_view' %}">Registrarse</a>
+            {% endif %}
+        </div>
+        
+    </div>
+
+   <!-- CARRUSEL -->
+    <div id="carouselEmprendimientos" class="carousel slide main-banner-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner main-banner-inner">
+            <div class="carousel-item active main-banner-item">
+                <img src="{% static 'cuentas/img/banner inicial.png' %}" class="d-block w-100" alt="Emprendimiento 1">
+            </div>
+            <div class="carousel-item main-banner-item">
+                <img src="{% static 'cuentas/img/banner2.png' %}" class="d-block w-100" alt="Emprendimiento 2">
+            </div>
+            <div class="carousel-item main-banner-item">
+                <img src="{% static 'cuentas/img/recomendado3.png' %}" class="d-block w-100" alt="Emprendimiento 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselEmprendimientos"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselEmprendimientos"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Siguiente</span>
+        </button>
+    </div>
+    
+    <div class="texto-recomendados">
+        RECOMENDADOS
+    </div>
+
+    <!-- CARRUSEL RECOMENDADOS -->
+    <div id="carouselRecomendados" class="carousel slide " data-bs-ride="carousel">
+        <div class="carousel-inner ">
+            <!-- Parte 1 -->
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-between">
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-gris">
+                            <img src="{% static 'cuentas/img/recomendado1.png' %}" class="img-recommended" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-azul">Nivo</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-azul">
+                            <img src="{% static 'cuentas/img/recomendado3.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-gris">Polle's</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-gris">
+                            <img src="{% static 'cuentas/img/recomendado2.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-azul">Taste</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <!-- Parte 2 -->
+            <div class="carousel-item">
+                <div class="d-flex justify-content-between">
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-azul">
+                            <img src="{% static 'cuentas/img/recomendado5.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-gris">Gomas y Mas</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-gris">
+                            <img src="{% static 'cuentas/img/recomendado4.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-azul">Buñuelitos</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-azul">
+                            <img src="{% static 'cuentas/img/recomendado6.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-gris">Surtidito</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parte 3 -->
+            <div class="carousel-item">
+                <div class="d-flex justify-content-between">
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-gris">
+                            <div class="img-wrapper">
+                                <img src="{% static 'cuentas/img/recomendado7.png'%}" alt="Foto">
+                            </div>
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-azul">Bowlings</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-azul">
+                            <img src="{% static 'cuentas/img/recomendado8.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-gris">Barquilloz</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-gris">
+                            <img src="{% static 'cuentas/img/recomendado9.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-azul">Joy</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                </div>
+                
+            </div>
+
+            <!-- Parte 4 -->
+            <div class="carousel-item">
+                <div class="d-flex justify-content-between">
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-gris">
+                            <div class="img-wrapper">
+                                <img src="{% static 'cuentas/img/recomendado10.png'%}" alt="Foto">
+                            </div>
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-azul">Bowlings</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-azul">
+                            <img src="{% static 'cuentas/img/recomendado11.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-gris">Barquilloz</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                    <div class="columna mx-1">
+                        <div class="cuadro-recomendado-base cuadro-recomendado-gris">
+                            <img src="{% static 'cuentas/img/recomendado12.png'%}" alt="Foto">
+                        </div>
+                        <div class="recomendado-abajo-base recomendado-abajo-azul">Joy</div>
+                        <div class="ver-ya">Ver ya!</div>
+                    </div>
+
+                </div>
+                
+            </div>
+ 
+
+
+
+     
+
+        </div>
+        <button class="carousel-control-prev exact-arrow" type="button" data-bs-target="#carouselRecomendados" data-bs-slide="prev">
+            <span class="arrow-icon-wrapper">
+                <svg class="arrow-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" fill="black"/>
+                </svg>
+            </span>
+        </button>
+          
+        <button class="carousel-control-next exact-arrow" type="button" data-bs-target="#carouselRecomendados" data-bs-slide="next">
+            <span class="arrow-icon-wrapper">
+                <svg class="arrow-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" fill="black"/>
+                </svg>
+            </span>
+        </button>
+        
+    </div>
+
+
+    
+    <div class="content">
+        <div id="contenedor-usuario" class="login-container">
+            <h2>Registro</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+            
+                <div class="form-group">
+                    {{ form.nombre_completo }}
+                </div>
+            
+                <div class="form-group">
+                    {{ form.correo_institucional }}
+                </div>
+    
+                <div class="form-group">
+                    {{ form.numero_celular }}
+                </div>
+            
+                <div class="form-group">
+                    {{ form.password1 }}
+                </div>
+            
+                <div class="form-group">
+                    {{ form.password2 }}
+                </div>
+            
+                <button type="submit">Registrarse</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a href="{% url 'login_view' %}">Inicia Sesión</a></p>
+            <p>Inicia como Invitado</p>
+        </div>
+    </div>
+    
+    
+    <a class="bottom-bar" href="{% url 'guia_emprendedor' %}">¿Quieres que tu emprendimiento esté en Antojos Eafit?</a>
+    
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEk039Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script_menu.js' %}"></script>
+    <script src="{% static 'js/script_carrusel.js' %}"></script>
+</html>

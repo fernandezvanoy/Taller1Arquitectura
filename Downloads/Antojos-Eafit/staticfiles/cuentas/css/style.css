@@ -1,0 +1,282 @@
+/* BARRA AZUL */
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.top-bar {
+    width: 100%;
+    height: 2cm;
+    background-color: #5B6BF5;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 0 30px;
+    box-sizing: border-box;
+    
+}
+
+.logo {
+    max-height: 80%;
+    max-width: 150px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+  /* MENU OPCIONES */
+
+.contenedor-izquierda {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}  
+
+.icono-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 21px;
+    width: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    
+}
+
+.icono-menu .linea {
+    width: 24px;
+    height: 3px; /* verificar el tamaño de esto */
+    background-color: white;
+    border-radius: 2px;
+}
+
+.menu-opciones {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px); /* Coloca el menú debajo del icono */
+    left: 0;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 6px 6px;
+    padding: 10px 0;
+    width: 200px;
+    z-index: 1000;
+    margin-top: 0;
+}
+.menu-opciones a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-family: 'Arimo', sans-serif;
+    color: #727272;
+    font-size: 14px;
+}
+
+.menu-opciones a:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+/* MENU USUARIO */
+
+.iconos-derecha{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.iconos-derecha i{
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-usuario{
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color:white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    padding: 10px;
+    width: 150px;
+}
+
+.menu-usuario a{
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    font-family: 'Arimo', sans-serif;
+    color: #727272;
+    font-size: 14px;
+}
+
+.menu-usuario a:hover{
+    background-color: #f0f0f0;
+}
+
+/* BANNER */
+
+.banner {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    opacity: 0.57;
+}
+
+.side-banner{
+    width: 620px;
+    height: auto;
+    display: block;
+    opacity: 0.57;
+   
+}
+
+/* TITULO RECOMENDADOS */
+.texto-recomendados{
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+}
+
+
+/* CARRUSEL DE RECOMENDADOS */
+.contenedor-recomendados{
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+   
+    
+}
+
+.columna{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 275px;
+}
+
+
+.cuadro-recomendado-base{
+    height: 350px;
+    width: 100%;
+    position: relative;
+    margin-top: 50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.cuadro-recomendado-base img{
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.3s ease;
+    border-radius: 10px;
+}
+
+
+
+.recomendado-abajo-base{
+    height: 50px;
+    width: 275px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Arimo', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    font-style: italic;
+    padding-right: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: 1px;
+}
+
+
+
+.cuadro-recomendado-azul{
+    background-color: #5B6BF5;
+}
+
+.cuadro-recomendado-gris{
+    background-color: #dfdfdf;
+}
+
+.recomendado-abajo-gris{
+    background-color: #ced6ff;
+
+}
+
+.recomendado-abajo-azul{
+    background-color: #5B6BF5;
+
+}
+
+
+.ver-ya{
+    background-color: white;
+    color: black;
+    font-family: 'Arimo', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0;
+    width: 150px;
+    border: 2px solid black;
+    margin-top: 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+   
+}
+
+.ver-ya:hover{
+    background-color: #dfdfdf;
+   
+}
+
+.bottom-bar {
+    width: 100%;
+    height: 1.5cm;
+    background-color: #5B6BF5;
+    position: flex;
+    bottom: 0;
+    left: 0;
+    font-family: 'Arimo', sans-serif;
+    font-size: 25px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+/* .titulo-guia {
+    font-family: 'League Spartan', sans-serif;
+    color: #5b6bf5;
+    text-align: center;
+    font-weight: 700;
+    margin: 20px 0;
+    font-size: 2.5rem;
+} */

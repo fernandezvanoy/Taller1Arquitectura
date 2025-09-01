@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h3>¿Estás seguro que deseas eliminar "{{ entrepreneur.business_name }}"?</h3>
+    <form method="post">
+    {% csrf_token %}
+    <a href="{% url 'entrepreneur_list' %}" class="btn btn-secondary">Cancelar</a>
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+</div>
+{% endblock %}
