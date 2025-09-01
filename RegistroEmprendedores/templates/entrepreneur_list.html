@@ -1,0 +1,134 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprendedores - Antojos EAFIT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'cuentas/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'negocios/css/carrusel.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="{% static 'js/scripts.js' %}"></script>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="contenedor-izquierda">
+            <div class="icono-menu" id="icono-menu">
+                <div class="linea"></div>
+                <div class="linea"></div>
+                <div class="linea"></div>
+            </div>
+            <div class="menu-opciones" id="menu-opciones">
+                <a href="{% url 'inicio' %}">Inicio</a>
+                <a href="{% url 'categorias' %}">Categorias</a>
+                <a href="{% url 'catalogo' %}">Productos</a>
+                <a href="{% url 'create_entrepreneur' %}">Registrar emprendimiento</a>
+                <a href="{% url 'entrepreneur_list' %}">Lista emprendimientos</a>
+            </div>
+        </div>
+
+        <img src="{% static 'cuentas/img/logo.png' %}" alt="Logo" class="logo">
+
+        <div class="iconos-derecha">
+            <i id="icono-usuario" class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+
+        <div id="menu-usuario" class="menu-usuario">
+            Antojos EAFIT
+            {% if user.is_authenticated %}
+                <p>Bienvenido, {{ user.nombre_completo }}</p>
+                <a href="{% url 'logout' %}">Cerrar Sesión</a>
+            {% else %}
+                <a href="{% url 'login_view' %}">Iniciar Sesión</a>
+                <a href="{% url 'registro_view' %}">Registrarse</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h2 class="text-center">Emprendimientos Registrados</h2>
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Nombre del Negocio</th>
+                    <th>Ubicación</th>
+                    <th>Horario Lunes</th>
+                    <th>Horario Martes</th>
+                    <th>Horario Miércoles</th>
+                    <th>Horario Jueves</th>
+                    <th>Horario Viernes</th>
+                    <th>Contacto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for e in entrepreneurs %}
+                    <tr>
+                        <td>{{ e.business_name }}</td>
+                        <td>{{ e.location }}</td>
+                        <td>
+                            {% if e.lunes_inicio and e.lunes_fin %}
+                                {{ e.lunes_inicio|date:"H:i" }} - {{ e.lunes_fin|date:"H:i" }}
+                            {% else %}
+                                No disponible
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if e.martes_inicio and e.martes_fin %}
+                                {{ e.martes_inicio|date:"H:i" }} - {{ e.martes_fin|date:"H:i" }}
+                            {% else %}
+                                No disponible
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if e.miercoles_inicio and e.miercoles_fin %}
+                                {{ e.miercoles_inicio|date:"H:i" }} - {{ e.miercoles_fin|date:"H:i" }}
+                            {% else %}
+                                No disponible
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if e.jueves_inicio and e.jueves_fin %}
+                                {{ e.jueves_inicio|date:"H:i" }} - {{ e.jueves_fin|date:"H:i" }}
+                            {% else %}
+                                No disponible
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if e.viernes_inicio and e.viernes_fin %}
+                                {{ e.viernes_inicio|date:"H:i" }} - {{ e.viernes_fin|date:"H:i" }}
+                            {% else %}
+                                No disponible
+                            {% endif %}
+                        </td>
+                        <td>{{ e.contact_info }}</td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton{{ e.pk }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Acciones
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ e.pk }}">
+                                    <li>
+                                        <a class="dropdown-item text-danger" href="{% url 'delete_entrepreneur' e.pk %}">Eliminar</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'add_product' e.pk %}">Agregar Producto</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'view_products' e.pk %}">Ver Productos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/script_menu.js' %}"></script>
+</body>
+</html>

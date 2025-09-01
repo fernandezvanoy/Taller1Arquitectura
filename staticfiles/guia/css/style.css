@@ -1,0 +1,86 @@
+.titulo-guia {
+    font-family: 'League Spartan', sans-serif;
+    color: #5b6bf5;
+    text-align: center;
+    font-weight: 700; /* Puedes ajustar el grosor (400, 500, 600, 700, etc.) */
+    margin: 0 auto; /* Centrado horizontal */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    /* Opcional: ajusta estos valores según necesites */
+    font-size: 3rem; /* Tamaño de fuente */
+    line-height: 1.2; /* Interlineado */
+    padding: 20px 0; /* Espaciado vertical */
+    margin-top: 50px;
+}
+
+
+
+.cuadro-informativo {
+    background-color: #ced6ff;
+    border: 2px solid #5b6bf5; /* Borde azul más oscuro */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    width: 80%; /* Ancho del cuadro (ajustable) */
+    max-width: 900px; /* Ancho máximo (opcional) */
+    margin: 30px auto; /* Centrado horizontal y espacio arriba/abajo */
+    padding: 30px; /* Espacio interno */
+    text-align: left; /* Alineación del texto a la izquierda */
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+}
+
+/* Estilos para el contenido interno */
+.cuadro-informativo h2 {
+    color: #3a4af0; /* Color para subtítulos */
+    margin-top: 0;
+    font-family: 'League Spartan', sans-serif;
+}
+
+.cuadro-informativo p {
+    margin-bottom: 15px;
+}
+
+.cuadro-informativo ul {
+    padding-left: 25px;
+}
+
+
+/* Contenedor para los dos cuadraditos */
+.contenedor-cuadritos {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Espacio entre cuadraditos */
+    margin-top: 20px;
+    width: 80%;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilo base para ambos cuadraditos */
+.cuadradito {
+    width: 180px;  /* Más anchos que altos */
+    height: 60px;  /* Mucho menos altura (planos) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #000000; /* Texto negro */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: #7f93f4; /* Azul solicitado */
+    border: 2px solid #5b6bf5;
+}
+
+/* Efecto hover para interactividad */
+.cuadradito:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: black; /* Texto blanco en hover */
+    background-color: #5b6bf5; /* Azul más oscuro al hover */
+}

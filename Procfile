@@ -1,0 +1,1 @@
+web: gunicorn taller1.wsgi
