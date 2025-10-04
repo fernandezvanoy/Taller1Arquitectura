@@ -7,8 +7,11 @@ from django.conf import settings
 from django.utils.module_loading import import_string
 
 
-StorageClass = import_string(settings.IMAGE_STORAGE_CLASS)
-storage = StorageClass()
+# StorageClass = import_string(settings.IMAGE_STORAGE_CLASS)
+# storage = StorageClass()
+
+from .factory import StorageFactory
+storage = StorageFactory.create_storage()
 
 # Create your views here.
 def create_entrepreneur(request):
