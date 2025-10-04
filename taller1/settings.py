@@ -156,4 +156,10 @@ AUTH_USER_MODEL = 'cuentas.Usuario'
 MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware']
 
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+#DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# Clase de almacenamiento de imágenes para todo el proyecto
+IMAGE_STORAGE_CLASS = 'RegistroEmprendedores.storage.CloudinaryStorage'
+
+
+
