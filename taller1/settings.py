@@ -69,6 +69,7 @@ INSTALLED_APPS = [
     'negocios',
     'RegistroEmprendedores',
     'guia',
+    'reviews',
 
 ]
 

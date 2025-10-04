@@ -26,10 +26,33 @@ def entrepreneur_detail(request, pk):
         'entrepreneur': entrepreneur
     })
 
-def product_detail(request, pk):
-    product = get_object_or_404(Product.objects.select_related('entrepreneur'), pk=pk)
-    return render(request, 'product_detail.html', {'product': product})
+from django.shortcuts import render, get_object_or_404, redirect
+from reviews.factory import ReviewFactory
+from reviews.forms import ReviewForm
+from negocios.models import Product
 
+def product_detail(request, pk):
+    product = get_object_or_404(Product, id=pk)
+    reviews = product.reviews.all()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            ReviewFactory.create_review(
+                user=request.user,
+                product=product,
+                rating=form.cleaned_data['rating'],
+                comment=form.cleaned_data['comment']
+            )
+            return redirect('product_detail', pk=product.id)
+    else:
+        form = ReviewForm()
+
+    return render(request, 'product_detail.html', {
+        'product': product,
+        'reviews': reviews,
+        'form': form
+    })
 
 def category_products(request, category_name):
     # Filtrar productos por la categoría seleccionada

@@ -1,9 +1,10 @@
 from django.conf import settings
 from django.db import models
+from .models_base import TimeStampedModel # Cambio
 
-class Entrepreneur(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)  # Replace 1 with a valid user ID
-    business_name = models.CharField(max_length=255)  # Removed duplicate field
+class Entrepreneur(TimeStampedModel): # CAMBIO: Se hereda
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)  
+    business_name = models.CharField(max_length=255)  
     location = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     lunes_inicio = models.TimeField(blank=True, null=True)
@@ -22,7 +23,7 @@ class Entrepreneur(models.Model):
     def __str__(self):
         return self.business_name
 
-class Product(models.Model):
+class Product(TimeStampedModel): # CAMBIO: Se hereda
     entrepreneur = models.ForeignKey(Entrepreneur, on_delete=models.CASCADE, related_name='products')
     name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)

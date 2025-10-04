@@ -15,6 +15,8 @@ urlpatterns = [
     path('', include('negocios.urls')),
     path('', include('RegistroEmprendedores.urls')),
     path('', include('guia.urls')),
+    path('reviews/', include('reviews.urls')),
+
 ]
 
 #if settings.DEBUG:

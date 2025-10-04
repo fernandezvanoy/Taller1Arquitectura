@@ -147,12 +147,29 @@ def edit_product(request, pk):
         'current_category': current_cat_value,
     })
 
-def delete_product(request, pk):
-    product = get_object_or_404(Product, pk=pk)
-    if request.method == 'POST':
-        product.delete()
-        return redirect('view_products', pk=product.entrepreneur.pk)
-    return render(request, 'confirm_delete_product.html', {'product': product})
+# def delete_product(request, pk):
+#     product = get_object_or_404(Product, pk=pk)
+#     if request.method == 'POST':
+#         product.delete()
+#         return redirect('view_products', pk=product.entrepreneur.pk)
+#     return render(request, 'confirm_delete_product.html', {'product': product})
+
+from django.urls import reverse_lazy
+from django.views.generic import DeleteView
+from django.shortcuts import get_object_or_404
+from .models import Product
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'confirm_delete_product.html'
+    context_object_name = 'product'
+
+    def get_success_url(self):
+        # Redirige a la lista de productos del emprendedor
+        entrepreneur_id = self.object.entrepreneur.pk
+        return reverse_lazy('view_products', kwargs={'pk': entrepreneur_id})
+
+
 
 def product_success(request, pk):
     entrepreneur = get_object_or_404(Entrepreneur, pk=pk)

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Reseñas de {{ product.name }}</h2>
+<ul>
+    {% for review in reviews %}
+        <li>{{ review.user.username }}: {{ review.rating }} estrellas - "{{ review.comment }}"</li>
+    {% empty %}
+        <li>No hay reseñas aún</li>
+    {% endfor %}
+</ul>
+{% endblock %}
